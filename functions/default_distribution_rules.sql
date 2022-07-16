@@ -21,4 +21,3 @@ $$ LANGUAGE plpgsql;
 -- INSERT INTO movie_db.videos (duration, published_status, views, title) VALUES (200, TRUE, 0, 'HISTÓRIA SEM FIM');
 -- SELECT setDefaultDistributionRule(<video_id>);
 -- SELECT * FROM movie_db.distribution_rules;
-612a15af545cff03d278b30a5ffe29d72a0b0719
