@@ -10,7 +10,7 @@ BEGIN
    SELECT count(*) INTO validateRules FROM movie_db.distribution_rules WHERE country_id = brasilID AND video_id = videoID;
 
    IF validateRules = 0 THEN
-	   INSERT INTO movie_db.distribution_rules (country_id, video_id) VALUES (brasilID, videoID);
+      INSERT INTO movie_db.distribution_rules (country_id, video_id) VALUES (brasilID, videoID);
    END IF;
 END;
 $$ LANGUAGE plpgsql;

@@ -141,7 +141,7 @@ CREATE TABLE movie_db.movies (
     video_id integer NOT NULL,
     synopsis_id integer,
     genre_id integer,
-    customer_name character varying(50),
+    title character varying(50),
     CONSTRAINT genre_id FOREIGN KEY (genre_id) REFERENCES movie_db.genres(genre_id) NOT VALID,
     CONSTRAINT video_id FOREIGN KEY (video_id) REFERENCES movie_db.videos(video_id) NOT VALID,
     CONSTRAINT synopsis_id FOREIGN KEY (synopsis_id) REFERENCES movie_db.synopsis(synopsis_id) NOT VALID
@@ -150,8 +150,8 @@ CREATE TABLE movie_db.movies (
 CREATE TABLE movie_db.characters (
     character_id SERIAL PRIMARY KEY,
     name character varying(50) NOT NULL,
-    movie_id integer NOT NULL,
-    episode_id integer NOT NULL,
+    movie_id integer,
+    episode_id integer,
     CONSTRAINT episode_id FOREIGN KEY (episode_id) REFERENCES movie_db.episodes(episode_id) NOT VALID,
     CONSTRAINT movie_id FOREIGN KEY (movie_id) REFERENCES movie_db.movies(movie_id) NOT VALID
 );
