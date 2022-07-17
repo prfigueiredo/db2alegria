@@ -187,10 +187,11 @@ CREATE TABLE movie_db.playback_config (
     tech_spec_id integer NOT NULL,
     audio_id integer NOT NULL,
     subtitile_id integer NOT NULL,
-    video_time integer NOT NULL,
+    video_id integer NOT NULL,
     CONSTRAINT audio_id FOREIGN KEY (audio_id) REFERENCES movie_db.audios(audio_id) NOT VALID,
     CONSTRAINT tech_spec_id FOREIGN KEY (tech_spec_id) REFERENCES movie_db.tech_specs(tech_spec_id) NOT VALID,
-    CONSTRAINT subtitle_id FOREIGN KEY (subtitile_id) REFERENCES movie_db.subtitles(subtitle_id) NOT VALID
+    CONSTRAINT subtitle_id FOREIGN KEY (subtitile_id) REFERENCES movie_db.subtitles(subtitle_id) NOT VALID,
+    CONSTRAINT video_id FOREIGN KEY (video_id) REFERENCES movie_db.videos(video_id) NOT VALID
 );
 
 CREATE TABLE movie_db.premiere_schedulers (
