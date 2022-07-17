@@ -1,10 +1,10 @@
-CREATE OR REPLACE FUNCTION movie_db.setNewDefaultDistribution() RETURNS TRIGGER AS $$
-BEGIN
-    /* movie_db.setDefaultDistributionRule é definida em /functions */
-	PERFORM movie_db.setDefaultDistributionRule(NEW.video_id);
-    RETURN NEW;
-END;
-$$ LANGUAGE PLPGSQL;
+-- CREATE OR REPLACE FUNCTION movie_db.setNewDefaultDistribution() RETURNS TRIGGER AS $$
+-- BEGIN
+--     -- /* movie_db.setDefaultDistributionRule é definida em /functions */
+-- 	PERFORM movie_db.setDefaultDistributionRule(NEW.video_id);
+--     RETURN NEW;
+-- END;
+-- $$ LANGUAGE PLPGSQL;
 
 CREATE OR REPLACE TRIGGER DEFAULT_DISTRIBUTION AFTER
     INSERT ON movie_db.videos
