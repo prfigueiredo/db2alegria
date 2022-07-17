@@ -215,3 +215,11 @@ CREATE TABLE movie_db.watch_later (
     CONSTRAINT video_id FOREIGN KEY (video_id) REFERENCES movie_db.videos(video_id) NOT VALID,
     CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES movie_db. users(user_id) NOT VALID
 );
+
+CREATE TABLE movie_db.watched_title (
+	title_watched_id SERIAL PRIMARY KEY,
+	user_id integer NOT NULL,
+	video_id integer NOT NULL,
+	CONSTRAINT video_id FOREIGN KEY (video_id) REFERENCES movie_db.videos(video_id) NOT VALID,
+	CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES movie_db.users(user_id) NOT VALID
+);
