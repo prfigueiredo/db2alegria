@@ -9,6 +9,8 @@
 -- SET client_min_messages = warning;
 -- SET row_security = off;
 
+DROP SCHEMA IF EXISTS movie_db CASCADE;
+
 CREATE SCHEMA movie_db;
 
 SET default_tablespace = '';
@@ -17,7 +19,9 @@ SET default_table_access_method = heap;
 
 CREATE TABLE movie_db.videos (
     video_id SERIAL PRIMARY KEY,
-    customer_name character varying(50) NOT NULL
+    title character varying(50) NOT NULL,
+    duration integer NOT NULL,
+	published_status boolean NOT NULL
 );
 
 CREATE TABLE movie_db.countries (
@@ -34,7 +38,7 @@ CREATE TABLE movie_db.languages (
 
 CREATE TABLE movie_db.synopsis (
     synopsis_id SERIAL PRIMARY KEY,
-    text text NOT NULL
+    description text NOT NULL
 );
 
 CREATE TABLE movie_db.plans (
@@ -102,8 +106,10 @@ CREATE TABLE movie_db.episodes (
     name character varying(50) NOT NULL,
     duration integer NOT NULL,
     serie_id integer NOT NULL,
+    season_id integer NOT NULL,
     video_id integer NOT NULL,
     CONSTRAINT serie_id FOREIGN KEY (serie_id) REFERENCES movie_db.series(serie_id) NOT VALID,
+    CONSTRAINT season_id FOREIGN KEY (season_id) REFERENCES movie_db.seasons(season_id) NOT VALID,
     CONSTRAINT video_id FOREIGN KEY (video_id) REFERENCES movie_db.videos(video_id) NOT VALID
 );
 
@@ -213,7 +219,7 @@ CREATE TABLE movie_db.watch_later (
     user_id integer NOT NULL,
     video_id integer NOT NULL,
     CONSTRAINT video_id FOREIGN KEY (video_id) REFERENCES movie_db.videos(video_id) NOT VALID,
-    CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES movie_db. users(user_id) NOT VALID
+    CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES movie_db.users(user_id) NOT VALID
 );
 
 CREATE TABLE movie_db.watched_title (

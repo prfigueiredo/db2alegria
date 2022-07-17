@@ -1,16 +1,16 @@
 -- DROP FUNCTION IF EXISTS setDefaultDistributionRule;
 
-CREATE OR REPLACE FUNCTION setDefaultDistributionRule(videoID INTEGER) RETURNS VOID AS
+CREATE OR REPLACE FUNCTION movie_db.setDefaultDistributionRule(videoID INTEGER) RETURNS VOID AS
 $$
 DECLARE
    brasilID INTEGER;
-  validateRules INTEGER;
+   validateRules INTEGER;
 BEGIN
    SELECT country_id INTO brasilID FROM movie_db.countries WHERE top_level_domain = 'BR';
    SELECT count(*) INTO validateRules FROM movie_db.distribution_rules WHERE country_id = brasilID AND video_id = videoID;
 
    IF validateRules = 0 THEN
-	 INSERT INTO movie_db.distribution_rules (country_id, video_id) VALUES (brasilID, videoID);
+	   INSERT INTO movie_db.distribution_rules (country_id, video_id) VALUES (brasilID, videoID);
    END IF;
 END;
 $$ LANGUAGE plpgsql;
