@@ -26,13 +26,13 @@ CREATE TABLE movie_db.videos (
 
 CREATE TABLE movie_db.countries (
     country_id SERIAL PRIMARY KEY,
-    top_level_domain character varying(2)
+    top_level_domain character varying(2) NOT NULL
 );
 
 CREATE TABLE movie_db.languages (
     language_id SERIAL PRIMARY KEY,
     name character varying(50) NOT NULL,
-    country_id integer,
+    country_id integer NOT NULL,
     CONSTRAINT country_id FOREIGN KEY (country_id) REFERENCES movie_db.countries(country_id) NOT VALID
 );
 
@@ -44,7 +44,7 @@ CREATE TABLE movie_db.synopsis (
 CREATE TABLE movie_db.plans (
     plan_id SERIAL PRIMARY KEY,
     qtt_screens integer NOT NULL,
-    price numeric(5,2)
+    price numeric(5,2) NOT NULL
 );
 
 CREATE TABLE movie_db.subtitles (
@@ -57,7 +57,7 @@ CREATE TABLE movie_db.subtitles (
 CREATE TABLE movie_db.audios (
     audio_id SERIAL PRIMARY KEY,
     language_id integer NOT NULL,
-    name character varying(50),
+    name character varying(50) NOT NULL,
     CONSTRAINT language_id FOREIGN KEY (language_id) REFERENCES movie_db.languages(language_id) NOT VALID
 );
 
@@ -139,8 +139,8 @@ CREATE TABLE movie_db.genres (
 CREATE TABLE movie_db.movies (
     movie_id SERIAL PRIMARY KEY,
     video_id integer NOT NULL,
-    synopsis_id integer,
-    genre_id integer,
+    synopsis_id integer NOT NULL,
+    genre_id integer NOT NULL,
     title character varying(50),
     CONSTRAINT genre_id FOREIGN KEY (genre_id) REFERENCES movie_db.genres(genre_id) NOT VALID,
     CONSTRAINT video_id FOREIGN KEY (video_id) REFERENCES movie_db.videos(video_id) NOT VALID,
