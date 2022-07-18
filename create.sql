@@ -156,12 +156,6 @@ CREATE TABLE movie_db.characters (
     CONSTRAINT movie_id FOREIGN KEY (movie_id) REFERENCES movie_db.movies(movie_id) NOT VALID
 );
 
-CREATE TABLE movie_db.next_releases (
-    next_releases_id SERIAL PRIMARY KEY,
-    movie_name character varying(50) NOT NULL,
-    movie_category character varying(50) NOT NULL
-);
-
 CREATE TABLE movie_db.permissions (
     permission_id SERIAL PRIMARY KEY,
     user_id integer NOT NULL,
@@ -192,18 +186,6 @@ CREATE TABLE movie_db.playback_config (
     CONSTRAINT tech_spec_id FOREIGN KEY (tech_spec_id) REFERENCES movie_db.tech_specs(tech_spec_id) NOT VALID,
     CONSTRAINT subtitle_id FOREIGN KEY (subtitile_id) REFERENCES movie_db.subtitles(subtitle_id) NOT VALID,
     CONSTRAINT video_id FOREIGN KEY (video_id) REFERENCES movie_db.videos(video_id) NOT VALID
-);
-
-CREATE TABLE movie_db.premiere_schedulers (
-    premiere_id SERIAL PRIMARY KEY,
-    date_premiere date NOT NULL,
-    time_premiere time with time zone NOT NULL
-);
-
-CREATE TABLE movie_db.studios (
-    studio_id SERIAL PRIMARY KEY,
-    studio_name character varying(50) NOT NULL,
-    feat_studio_name character varying(50) NOT NULL
 );
 
 CREATE TABLE movie_db.trailers (
