@@ -18,6 +18,6 @@ $$ LANGUAGE plpgsql;
 
 -- TESTING
 -- INSERT INTO movie_db.countries (top_level_domain) VALUES ('BR');
--- INSERT INTO movie_db.videos (duration, published_status, views, title) VALUES (200, TRUE, 0, 'HISTÓRIA SEM FIM');
+-- INSERT INTO movie_db.videos (duration, published_status, title) VALUES (200, TRUE, 'HISTÓRIA SEM FIM');
 -- SELECT setDefaultDistributionRule(<video_id>);
 -- SELECT * FROM movie_db.distribution_rules;
