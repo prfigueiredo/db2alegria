@@ -33,6 +33,8 @@ Na pasta de select ainda temos segregação por "usuários" e "videos".
 6. Continuar assistindo: Retorna a lista de "Continuar assistindo" dos usuários, mostrando o nome do usuário, o nome do título que está na sua lista e quanto tempo falta para finalizar o título.
 7. Quantidade de videos por país: Retorna a quantidade de vídeos disponíveis por cada país cadastrado no banco de dados.
 8. Títulos disponívels no BR: Retorna a lista de todos os títulos disponíveis em um determinado país (neste caso BR).
+9. Consulta de indentificadores de vídeos que possuem playback com HD especificado.
+10. Contagem de todos os Filmes por Gênero.
 
 ## Triggers
 1. Controle videos assistidos: Quando um update é feito na tabela `continue_watching` e o valor restante é setado para 0 (quando o título acaba), a trigger é responsável por captar o evento e inserir na tabela de controle de títulos assistidos.
